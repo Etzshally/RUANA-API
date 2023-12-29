@@ -19,7 +19,6 @@ function App() {
       const app = await client("https://shally-ruana.hf.space/");
       const result: PredictResult = await app.predict("/predict", [value]);
   
-      // Now TypeScript knows about the 'data' property
       if (result) {
         setResponse(result.data);
       }
