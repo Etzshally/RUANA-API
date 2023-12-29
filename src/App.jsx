@@ -9,24 +9,19 @@ function App() {
   const [Text, setText] = useState('');
   const [Response, setResponse] = useState('');
 
-  interface PredictResult {
-    data: YourExpectedDataType;
-  }
-  
-  const predictText = async (value: string) => {
+  const predictText = async (value) => {
     try {
-      setText(value);
+      setText(value)
       const app = await client("https://shally-ruana.hf.space/");
-      const result: PredictResult = await app.predict("/predict", [value]);
-  
+      const result = await app.predict("/predict", [value]);
       if (result) {
-        setResponse(result.data);
+        setResponse(result?.data)
       }
     } catch (error) {
-      setResponse(error.message);
+      setResponse(error.message)
     }
-  };
-  
+  }
+
   return (
     <>
       <div className='bg-gray-900 w-full flex flex-col justify-center items-center min-h-screen bg-opacity-80'>
